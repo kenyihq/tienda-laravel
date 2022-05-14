@@ -26,3 +26,8 @@ Route::post('products', function(Request $request) {
     return redirect()->route('products.index')->with('success', 'Producto creado correctamente');
     
 })->name('products.store');
+
+Route::delete('products/{id}', function($id) {
+    $product = Product::findOrfail($id);
+    return $product;
+})->name('products.destroy');

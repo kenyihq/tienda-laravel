@@ -20,11 +20,11 @@
                             @csrf
                             <div class="form-group">
                                 <label for="">Descripción</label>
-                                <input type="text" class="form-control" name="description">
+                                <input type="text" class="form-control" name="description" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Precio</label>
-                                <input type="number" class="form-control" name="price">
+                                <input type="number" class="form-control" name="price" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                             <a href=" {{ route('products.index') }}" class="btn btn-danger">Cancelar</a>
