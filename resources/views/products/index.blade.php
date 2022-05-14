@@ -17,7 +17,31 @@
                         <a href="{{ route('products.create') }}" class="btn btn-success btn-sm float-right">Nuevo producto</a>
                     </div>
                     <div class="card-body">
-                        ...
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($products as $product)
+                                <tr>
+                                    <td>
+                                        {{ $product->description }}
+                                    </td>
+                                    <td>
+                                        {{ $product->price }}
+                                    </td>
+    
+                                </tr>
+                                @endforeach
+                            </tbody>
+
+                        </table>
                     </div>
                 </div>
             </div>

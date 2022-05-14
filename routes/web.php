@@ -10,7 +10,8 @@ Route::get('/', function () {
 });
 
 Route::get('products', function() {
-    return view('products.index');
+    $products = Product::all();
+    return view('products.index', compact('products'));
 })-> name('products.index');
 
 Route::get('products/create', function() {
@@ -22,6 +23,6 @@ Route::post('products', function(Request $request) {
     $newProduct->description = $request->description;
     $newProduct->price = $request->price;
     $newProduct->save();
-    return redirect()->route('products.index');
+    return redirect()->route('products.index')->with('success', 'Producto creado correctamente');
     
 })->name('products.store');
