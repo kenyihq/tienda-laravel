@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 @section('content')
     <div class="container">
         <div class="row">
@@ -43,6 +43,13 @@
                             </tbody>
 
                         </table>
+                    </div>
+                    <div class="card-footer">
+                        Bienvenido {{ Auth::user()->name }}
+                        <a href="javascript: document.getElementById('logout').submit()" class="btn btn-danger btn-sm float-right">Cerrar sesion</a>
+                        <form action=" {{ route('logout') }} " id="logout" style="display:none;" method="POST">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
