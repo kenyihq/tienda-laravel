@@ -29,5 +29,19 @@ Route::post('products', function(Request $request) {
 
 Route::delete('products/{id}', function($id) {
     $product = Product::findOrfail($id);
-    return $product;
+    $product->delete();
+    return redirect()->route('products.index')->with('success', 'Producto eliminado correctamente');
 })->name('products.destroy');
+
+Route::get('products/{id}/edit', function($id) {
+    $product = Product::findOrfail($id);
+    return view('products.edit', compact('product'));
+})->name('products.edit');
+
+Route::put('products/{id}', function(Request $request, $id) {
+    $product = Product::findOrfail($id);
+    $product->description = $request->input('description');
+    $product->price = $request->input('price');
+    $product->save();
+    return redirect()->route('products.index')->with('success', 'Producto actualizado correctamente');
+})->name('products.update');
